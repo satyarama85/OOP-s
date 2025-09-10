@@ -1,0 +1,24 @@
+// Code your testbench here
+// or browse Examples
+class ethernet_packet;
+  int a;
+endclass
+
+class good_eth_pkt extends ethernet_packet;
+  int b;
+endclass
+
+module tb;
+  bit y;
+  ethernet_packet eth_pkt;
+  good_eth_pkt g_pkt;
+  initial begin
+    $cast(eth_pkt,g_pkt);
+    y=$cast(eth_pkt,g_pkt);
+    $display("y=%0d",y);
+  end
+endmodule
+
+output
+# KERNEL: y=1
+# KERNEL: Simulation has finished.

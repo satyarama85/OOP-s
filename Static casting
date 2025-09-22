@@ -1,0 +1,17 @@
+//static casting
+module top;
+  int x;   //signed Data type(32 bit wide)
+  byte unsigned y;//Un_signed Data type (8 bit)
+  initial begin
+    x=-15;
+    y=x;   //Implict conversion(direct conversion) //simple code
+    $display("y=%0d",y);
+    y=byte'(x);  //Explict conversion (Indirect conversion) //complex codes
+    $display("y=%0d",y);
+  end
+endmodule
+
+Output:-
+------
+# KERNEL: y=241
+# KERNEL: y=241

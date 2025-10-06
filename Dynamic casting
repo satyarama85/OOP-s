@@ -1,0 +1,25 @@
+class ethernet_packet;
+  int a;
+endclass
+
+class good_eth_pkt extends ethernet_packet;
+  int b;
+endclass
+
+module tb;
+  bit y;
+  ethernet_packet eth_pkt;
+  good_eth_pkt g_pkt;
+  initial begin
+    eth_pkt=new();
+    g_pkt=new();
+    $cast(g_pkt,eth_pkt);
+    y=$cast(g_pkt,eth_pkt);
+    $display("y=%0d",y);
+  end
+endmodule
+
+OUTPUT:
+# KERNEL: Time: 0 ns,  Iteration: 0,  Instance: /tb,  Process: @INITIAL#15_0@.
+# KERNEL: y=0
+# KERNEL: Simulation has finished. There are no more test vectors to simulate.

@@ -1,0 +1,14 @@
+module tb;
+  wire a,b,c;
+   alias a=b;
+   alias c=b;
+  assign c=1'b1;
+  initial begin
+    #1;
+    $display("a=%0d,b=%0d,c=%0d",a,b,c);
+  end
+endmodule
+
+Output:
+# KERNEL: a=1,b=1,c=1
+# KERNEL: Simulation has finished.

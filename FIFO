@@ -1,0 +1,41 @@
+// Code your design here
+// Code your testbench here
+// or browse Examples
+class lifo;
+  int intQ[$];
+  function void put(int a);
+    intQ.push_front(a);
+  endfunction
+  function void get(output int a);
+   a=intQ.pop_back();
+  endfunction
+endclass
+
+module tb;
+  lifo s=new();
+  int num;
+  initial begin
+    repeat(5) begin
+      num=$urandom_range(10,30);
+      s.put(num);
+      $display("num=%0d",num);
+    end
+    repeat(5) begin
+      s.get(num);
+      $display("num=%0d",num);
+  end
+  end
+endmodule
+
+Output:
+# KERNEL: num=12
+# KERNEL: num=29
+# KERNEL: num=26
+# KERNEL: num=28
+# KERNEL: num=10
+# KERNEL: num=12
+# KERNEL: num=29
+# KERNEL: num=26
+# KERNEL: num=28
+# KERNEL: num=10
+# KERNEL: Simulation has finished.

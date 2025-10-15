@@ -1,0 +1,31 @@
+// Code your testbench here
+// or browse Examples
+class sample;
+int i; 
+rand bit[3:0] a[];
+  constraint c1 {a.size==8;
+                 foreach(a[i])
+                   if(i==0) a[i]==0;
+                 else if(i==1) a[i]==1;
+                 else a[i]==a[i-2]+a[i-1];
+                }
+endclass
+module tb;
+  sample s=new();
+  initial begin
+    assert (s.randomize());
+    foreach(s.a[i])
+      $display("a[%0d]=%0d",i,s.a[i]);
+  end
+endmodule
+
+output
+# KERNEL: a[0]=0
+# KERNEL: a[1]=1
+# KERNEL: a[2]=1
+# KERNEL: a[3]=2
+# KERNEL: a[4]=3
+# KERNEL: a[5]=5
+# KERNEL: a[6]=8
+# KERNEL: a[7]=13
+# KERNEL: Simulation has finished.

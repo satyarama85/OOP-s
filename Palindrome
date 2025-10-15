@@ -1,0 +1,22 @@
+class sample;
+  int i;
+  rand bit [2:0] a[];
+  constraint c1 {a.size == 3;
+    foreach (a[i]) 
+      if (i < a.size / 2)
+        a[i] == a[a.size - i - 1];
+  }
+endclass
+
+module tb;
+  sample s = new();
+  initial begin
+    assert(s.randomize());
+    foreach (s.a[i])
+      $write("%0d",s.a[i]);
+  end
+endmodule
+
+output:
+# KERNEL: 727
+# KERNEL: Simulation has finished.

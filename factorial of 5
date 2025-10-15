@@ -1,0 +1,25 @@
+class sample;
+  int i;
+  rand bit[7:0]a[];
+  constraint c1{a.size==5; a[0]==1;
+                foreach(a[i])
+                  if(i>0)
+                    a[i]==a[i-1]*(i+1);
+               }
+  endclass
+module tb;
+  sample s=new();
+  initial begin
+    assert (s.randomize());
+    foreach(s.a[i])
+      $display("a[%0d]=%0d",i,s.a[i]);
+  end
+endmodule
+
+output:
+# KERNEL: a[0]=1
+# KERNEL: a[1]=2
+# KERNEL: a[2]=6
+# KERNEL: a[3]=24
+# KERNEL: a[4]=120
+# KERNEL: Simulation has finished.

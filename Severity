@@ -1,0 +1,13 @@
+`include "uvm_macros.svh" //SV Based used to invoke the uvm_macros
+import uvm_pkg::*;  //used to involve the classes
+
+module tb;
+  initial begin
+    uvm_top.set_report_severity_action(UVM_WARNING,UVM_NO_ACTION)
+    `uvm_info("Top_tb","Info Message",UVM_NONE);
+    `uvm_error("Top_tb","Error Message");
+    `uvm_warning("Top_tb","Warning Message");
+  end
+endmodule
+
+OUTPUT

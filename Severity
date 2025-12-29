@@ -1,9 +1,11 @@
+// Code your testbench here
+// Severity
 `include "uvm_macros.svh" //SV Based used to invoke the uvm_macros
 import uvm_pkg::*;  //used to involve the classes
 
 module tb;
   initial begin
-    uvm_top.set_report_severity_action(UVM_WARNING,UVM_NO_ACTION)
+    uvm_top.set_report_severity_action(UVM_WARNING,UVM_NO_ACTION);
     `uvm_info("Top_tb","Info Message",UVM_NONE);
     `uvm_error("Top_tb","Error Message");
     `uvm_warning("Top_tb","Warning Message");
@@ -11,3 +13,6 @@ module tb;
 endmodule
 
 OUTPUT
+# KERNEL: UVM_INFO /home/build/vlib1/vlib/uvm-1.2/src/base/uvm_root.svh(392) @ 0: reporter [UVM/RELNOTES] 
+# KERNEL: UVM_INFO /home/runner/testbench.sv(9) @ 0: reporter [Top_tb] Info Message
+# KERNEL: UVM_ERROR /home/runner/testbench.sv(10) @ 0: reporter [Top_tb] Error Message
